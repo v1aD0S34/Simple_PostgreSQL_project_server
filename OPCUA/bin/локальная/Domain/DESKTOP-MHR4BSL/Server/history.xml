@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<History>
+  <Objects>
+    <Object Tag="Test">
+      <Parameters>
+        <Parameter RelativeTag="Parameter" ServerTime="true" EnableRepeatedWrites="true" RepeatTimeout="5" />
+        <Parameter RelativeTag="Parameter1" />
+        <Parameter RelativeTag="Parameter2" />
+      </Parameters>
+    </Object>
+  </Objects>
+</History>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Id="080e1ce7-a148-4f36-a2a6-8bab8dd56553" Version="1.0.0" OutputPath="bin\" UpgradeVersion="5">
+  <Files>
+    <AddressFile Name="IEC_MAP.xml" />
+    <AddressFile Name="MB_MAP.xml" />
+    <SourceFile Name="OPCUA.omx" />
+    <AddressFile Name="QParam.xml" />
+    <AddressFile Name="SQL.xml" />
+  </Files>
+</Project>

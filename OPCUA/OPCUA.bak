@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<omx xmlns="system" migration="27" xmlns:dp="automation.deployment" xmlns:eth="automation.ethernet" xmlns:srv="server" xmlns:a="automation" xmlns:ct="automation.control" xmlns:sql="automation.sql" xmlns:r="automation.reference">
+  <link-unit name="System" uuid="d41b7089-1e82-401a-8fe4-7283d199a00c" target="Om.System" />
+  <link-unit name="Server" uuid="7eccad6c-de76-45f4-88be-827f572fe53c" target="Om.Server" />
+  <link-unit name="PLC" uuid="80c3dd3f-04c9-4135-a1d8-4a7938b29a88" target="Om.PLC" />
+  <dp:domain name="Domain" uuid="cae8849c-da65-4d16-9b3b-20928b93e754" address="CentralNode">
+    <dp:domain-node name="DESKTOP-MHR4BSL" uuid="9a3de3f3-8d12-4431-9104-1be8de170f6a">
+      <eth:ethernet-adapter name="EthernetAdapter" uuid="a15ae21f-a803-43b8-9c64-22fda549bbaa" address="127.0.0.1" network="Ethernet" />
+      <srv:io-server name="Server" uuid="281af522-a89c-4b18-8f78-5a35d4983fb8">
+        <srv:opcda-server name="DaServer" uuid="aa36570a-3021-4d15-99ec-892f8d5734fd" />
+        <srv:opcaeserver-module name="AeServer" uuid="94c18e52-404c-4f15-9dbd-65b352a05140" />
+        <srv:tcp-server name="TcpServer" uuid="b24df612-bddf-4bd2-b75b-ddbf54e7f08a" history-port="4950" port="4388" />
+        <srv:history-module name="HistoryModule" uuid="0ee5fff3-fbb6-44c0-b803-7e1ac48c3ee6" logging-required="true">
+          <srv:historian-database-link database="Historian.Database" queue-path="C:\History\Queues" />
+        </srv:history-module>
+        <dp:application-object name="Application" uuid="101a592b-c130-4f7a-b059-f1b14e9e8ac0">
+          <ct:object name="Test" uuid="8ddcc4e3-0fdb-44bb-a2e1-28e91609d67e">
+            <ct:parameter name="Parameter" uuid="15ba2cda-9473-4bfd-9845-f7a157c37558" type="float32">
+              <attribute type="unit.Server.Attributes.History">
+                <property name="value">Enable="True" ServerTime="True" EnableRepeatedWrites="True" RepeatTimeout="5"</property>
+              </attribute>
+            </ct:parameter>
+            <parameter name="Parameter1" type="float32" xmlns="automation.control" uuid="b43e34d0-dd0d-4197-8e1c-4b84d2b5d469">
+              <attribute type="unit.Server.Attributes.History" value="Enable=&quot;True&quot;" xmlns="system" />
+            </parameter>
+            <parameter name="Parameter2" type="float32" xmlns="automation.control" uuid="de8215f4-c07e-46d3-bfae-b7687c60823d">
+              <attribute type="unit.Server.Attributes.History" value="Enable=&quot;True&quot;" xmlns="system" />
+            </parameter>
+          </ct:object>
+          <ct:object name="Test1" uuid="4fd4a5d6-14fd-4019-9a3c-d157002e3e24" original="Runtime.Application.Test" aspect="Aspects.IO">
+            <r:subject-ref name="_Test" uuid="dfbca909-b1fe-4895-b122-d09c621cc626" object="Runtime.Application.Test" const-access="false" aspected="true" />
+            <ct:parameter name="Result" uuid="8696c6b1-03b8-486d-91e1-626dfc88d95a" direction="out" type="float32" />
+            <ct:bind source="_Test.Parameter" target="Result" />
+            <ct:parameter name="From" uuid="a0df92a4-ab78-4a71-b092-499751e8d080" direction="in" type="string">
+              <attribute type="unit.System.Attributes.InitialValue" value="2022-09-29 04:05" />
+            </ct:parameter>
+            <ct:bind source="From" target="_Test.From" />
+            <ct:parameter name="To" uuid="8e95c0a3-a6a6-4641-8969-6f511f133f5e" direction="in" type="string">
+              <attribute type="unit.System.Attributes.InitialValue" value="2022-09-29 04:10" />
+            </ct:parameter>
+            <ct:bind source="To" target="_Test.To" />
+          </ct:object>
+          <sql:sql-connector-link-map name="SqlLinkMap" uuid="4eb5bce3-e745-4878-8bfb-963a82f87e9c" file="QParam.xml" />
+        </dp:application-object>
+        <srv:sqlconnector-module name="SqlConnector" uuid="b6457118-c76d-40fc-8427-9110b3ddf76e" logging-required="true">
+          <sql:database-link db="Runtime.SqlDatabase" provider="ODBC">
+            <property name="password">r27XG9M6Qkl12qmWH2MoIRseaEAvMi4tN8vn+wvaGLf3HHG6dQGCvRGpXmpkB2gr1gzmXY4Ut96m3IcIsEeGnqoV2xI02X6VskIbBPYeIqseB0F6yju6n0TO4EyAj6O2PjPLu9x9DAQ7i9vdjJiiN/UV8xTMnDxQFVN56M7WQus</property>
+            <property name="connection-string">Driver={PostgreSQL Unicode(x64)};Server=127.0.0.1;Port=5432;Database=postgres;UID=postgres;PWD=secret;</property>
+          </sql:database-link>
+          <property name="settings">
+            <node type="SqlConnector" xmlns="">
+              <node type="RQueryList">
+                <node type="RQuery">
+                  <prop name="ID" value="1" />
+                  <prop name="KeyField" value="" />
+                  <prop name="Period" value="1000" />
+                  <prop name="Text" value="SELECT SUM(valdouble) AS total FROM nodes_history h JOIN nodes n ON n.NodeId=h.NodeId WHERE (n.TagName='Test.Parameter') AND (h.time BETWEEN ? AND ?)" />
+                  <prop name="EmptyRequestResult" value="False" />
+                  <prop name="Timezone" value="0" />
+                  <prop name="DefaultQuality" value="64" />
+                  <node type="DefaultColumnValue">
+                    <prop name="ColumnName" value="valdouble" />
+                    <prop name="DefaultValue" value="0" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </property>
+        </srv:sqlconnector-module>
+        <srv:opcua-module name="OpcUaServer" uuid="fe0fb511-a40c-4183-9889-a0c2ef96564d" />
+      </srv:io-server>
+      <srv:historian name="Historian" uuid="dff6dab4-71de-4c4d-8231-750e13ce6bcd">
+        <srv:historian-database name="Database" uuid="a4e7eec7-5a8d-4000-9fb2-50ec82268447" alias="HistoryBase" />
+      </srv:historian>
+      <dp:external-runtime name="Runtime" uuid="5ce763dc-1480-4a10-b1af-ac76dd279b25">
+        <sql:sql-connector-db name="SqlDatabase" uuid="abdf9fca-8799-4eef-ad6c-f8872f23bd63" address-map="Application.SqlLinkMap" />
+        <dp:application-object name="Application" uuid="6ac79117-48cc-4bcb-aef9-537c573a6525">
+          <ct:object name="Test" uuid="a45a46ff-228d-4924-af4e-f3364ff79e98" aspect="Aspects.PLC">
+            <ct:parameter name="Parameter" uuid="ab5f1e58-b176-4ae0-af30-42298b858d96" type="float32" direction="out" />
+            <ct:parameter name="From" uuid="86ae7ec0-79be-4eed-96fc-a8b5ec2491dc" type="string" direction="in" />
+            <ct:parameter name="To" uuid="9ca3e7e5-79cc-4604-ad70-d72d71e92c45" type="string" direction="in" />
+          </ct:object>
+          <sql:sql-connector-link-map name="SqlLinkMap" uuid="dc40ccbb-1427-477d-9fac-858ba97d6d6c" file="SQL.xml" />
+        </dp:application-object>
+      </dp:external-runtime>
+    </dp:domain-node>
+    <eth:ethernet-net name="Ethernet" uuid="3b7d407a-249c-45a1-a237-b7197580bfd9" />
+  </dp:domain>
+  <namespace name="Aspects" uuid="42cc05b4-ed2f-4cc5-9382-047d5aa63439">
+    <a:aspect name="PLC" uuid="48ded236-e439-4e59-87b7-832fe2a72903" />
+    <a:aspect name="IO" uuid="2fdd87fd-aa96-4caa-a9f5-e043732018ae" />
+  </namespace>
+</omx>

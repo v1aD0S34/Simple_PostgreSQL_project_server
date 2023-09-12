@@ -1,0 +1,22 @@
+<root format-version="0">
+  <item Binding="Introduced">
+    <node-path>Test.Parameter</node-path>
+    <query-id>1</query-id>
+    <type>QRead</type>
+    <value>total</value>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Test.From</node-path>
+    <query-id>1</query-id>
+    <type>QParam</type>
+    <param-id>1</param-id>
+    <param-value-prop-id>2</param-value-prop-id>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Test.To</node-path>
+    <query-id>1</query-id>
+    <type>QParam</type>
+    <param-id>2</param-id>
+    <param-value-prop-id>2</param-value-prop-id>
+  </item>
+</root>

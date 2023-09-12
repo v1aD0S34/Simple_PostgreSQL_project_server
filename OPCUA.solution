@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Solution Id="6ec71b1b-f61d-4574-9d49-a75b3396647c">
+  <Projects>
+    <Project FilePath="OPCUA\OPCUA.omx-project" />
+  </Projects>
+</Solution>
