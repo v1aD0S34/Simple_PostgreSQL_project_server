@@ -12,10 +12,10 @@
     <ethernet-net Id="3b7d407a-249c-45a1-a237-b7197580bfd9" Left="275.5" Top="20" Width="76.0066666666667" Height="32.59" />
   </domain>
   <domain-node Id="9a3de3f3-8d12-4431-9104-1be8de170f6a" OffsetX="0" OffsetY="0" Scale="1" SnapToGrid="false">
-    <ethernet-adapter Id="a15ae21f-a803-43b8-9c64-22fda549bbaa" Left="874.006666666667" Top="234.536672153473" Width="137.993333333333" Height="45.63" />
-    <io-server Id="281af522-a89c-4b18-8f78-5a35d4983fb8" Left="284" Top="91.0319691085816" Width="150" Height="150" />
-    <historian Id="dff6dab4-71de-4c4d-8231-750e13ce6bcd" Left="299" Top="313.08" Width="150" Height="100" />
-    <external-runtime Id="5ce763dc-1480-4a10-b1af-ac76dd279b25" Left="520" Top="71.08" Width="150" Height="100" />
+    <ethernet-adapter Id="a15ae21f-a803-43b8-9c64-22fda549bbaa" Left="463.006666666667" Top="336.536672153473" Width="137.993333333333" Height="45.63" />
+    <io-server Id="281af522-a89c-4b18-8f78-5a35d4983fb8" Left="33" Top="12.0319691085816" Width="261" Height="173" />
+    <historian Id="dff6dab4-71de-4c4d-8231-750e13ce6bcd" Left="56" Top="434.08" Width="150" Height="100" />
+    <external-runtime Id="5ce763dc-1480-4a10-b1af-ac76dd279b25" Left="464" Top="37.08" Width="150" Height="100" />
   </domain-node>
   <domain-node Id="aff5e2b0-a483-4a3f-a629-187076df7c6b" OffsetX="0" OffsetY="0" Scale="1" SnapToGrid="false">
     <ethernet-adapter Id="222e0237-0387-416e-9fde-bdb5babe506f" Left="852.006666666667" Top="234.536672153473" Width="159.993333333333" Height="45.63" />
@@ -47,13 +47,13 @@
     <modbus-link-map Id="a0c7d97d-0925-4782-a9f3-131050137f87" Left="247" Top="135.031969108582" Width="183.256666666667" Height="61.63" />
   </application-object>
   <io-server Id="281af522-a89c-4b18-8f78-5a35d4983fb8" OffsetX="0" OffsetY="0" Scale="1" SnapToGrid="false">
-    <opcda-server Id="aa36570a-3021-4d15-99ec-892f8d5734fd" Left="1056.98666666667" Top="26" Width="116.906666666667" Height="36.63" />
-    <opcaeserver-module Id="94c18e52-404c-4f15-9dbd-65b352a05140" Left="1058.86666666667" Top="102.63" Width="115.026666666667" Height="36.63" />
-    <tcp-server Id="b24df612-bddf-4bd2-b75b-ddbf54e7f08a" Left="1061.16000000001" Top="332.52" Width="112.733333333333" Height="36.63" />
-    <history-module Id="0ee5fff3-fbb6-44c0-b803-7e1ac48c3ee6" Left="544.98666666667" Top="269.52" Width="152.443333333333" Height="99.63" />
-    <application-object Id="101a592b-c130-4f7a-b059-f1b14e9e8ac0" Left="864.98666666667" Top="129.08" Width="150" Height="100" />
-    <sqlconnector-module Id="b6457118-c76d-40fc-8427-9110b3ddf76e" Left="24" Top="269.52" Width="145.476666666667" Height="99.63" />
-    <opcua-module Id="fe0fb511-a40c-4183-9889-a0c2ef96564d" Left="1056.98666666667" Top="401.031969108582" Width="131.013333333333" Height="36.63" />
+    <opcda-server Id="aa36570a-3021-4d15-99ec-892f8d5734fd" Left="993.04" Top="27" Width="116.906666666667" Height="36.63" />
+    <opcaeserver-module Id="94c18e52-404c-4f15-9dbd-65b352a05140" Left="993.98" Top="102.63" Width="115.026666666667" Height="36.63" />
+    <tcp-server Id="b24df612-bddf-4bd2-b75b-ddbf54e7f08a" Left="995.126666666667" Top="332.52" Width="112.733333333333" Height="36.63" />
+    <history-module Id="0ee5fff3-fbb6-44c0-b803-7e1ac48c3ee6" Left="473.986666666667" Top="269.52" Width="152.443333333333" Height="99.63" />
+    <application-object Id="101a592b-c130-4f7a-b059-f1b14e9e8ac0" Left="793.986666666667" Top="129.08" Width="150" Height="100" />
+    <sqlconnector-module Id="b6457118-c76d-40fc-8427-9110b3ddf76e" Left="24" Top="46.031969108582" Width="204.476666666667" Height="110.63" />
+    <opcua-module Id="fe0fb511-a40c-4183-9889-a0c2ef96564d" Left="985.986666666667" Top="401.031969108582" Width="131.013333333333" Height="36.63" />
   </io-server>
   <namespace Id="42cc05b4-ed2f-4cc5-9382-047d5aa63439" OffsetX="0" OffsetY="0" Scale="1" SnapToGrid="false">
     <aspect Id="48ded236-e439-4e59-87b7-832fe2a72903" Left="129" Top="156.08" Width="100" Height="40" />
@@ -64,9 +64,9 @@
     <namespace Id="4986daa0-a022-4dff-af1a-53ce1553df85" Left="309" Top="26.08" Width="150" Height="100" />
     <namespace Id="92b7f042-8b46-47ee-8105-d11336b6ef6a" Left="507" Top="22.08" Width="150" Height="100" />
   </namespace>
-  <application-object Id="101a592b-c130-4f7a-b059-f1b14e9e8ac0" OffsetX="136.826666666667" OffsetY="0" Scale="1" SnapToGrid="false">
-    <object Id="8ddcc4e3-0fdb-44bb-a2e1-28e91609d67e" Left="683.826666666667" Top="33" Width="150" Height="100" />
-    <object Id="4fd4a5d6-14fd-4019-9a3c-d157002e3e24" Left="185.826666666667" Top="26" Width="442.44" Height="111.63" />
+  <application-object Id="101a592b-c130-4f7a-b059-f1b14e9e8ac0" OffsetX="0" OffsetY="0" Scale="1" SnapToGrid="false">
+    <object Id="8ddcc4e3-0fdb-44bb-a2e1-28e91609d67e" Left="607.826666666667" Top="33" Width="150" Height="100" />
+    <object Id="4fd4a5d6-14fd-4019-9a3c-d157002e3e24" Left="109.826666666667" Top="26" Width="442.44" Height="111.63" />
   </application-object>
   <historian Id="dff6dab4-71de-4c4d-8231-750e13ce6bcd" OffsetX="0" OffsetY="0" Scale="1" SnapToGrid="false">
     <historian-database Id="a4e7eec7-5a8d-4000-9fb2-50ec82268447" Left="40" Top="40" Width="103.223333333333" Height="36" />
@@ -92,23 +92,22 @@
     <parameter Id="1b5495d3-0bf6-43db-b3c6-89fdc52f8185" Left="1111.17333333333" Top="26" Width="144.826666666667" Height="22" />
   </object>
   <external-runtime Id="5ce763dc-1480-4a10-b1af-ac76dd279b25" OffsetX="0" OffsetY="0" Scale="1" SnapToGrid="false">
-    <sql-connector-db Id="abdf9fca-8799-4eef-ad6c-f8872f23bd63" Left="1106.43" Top="26" Width="149.57" Height="58.59" />
+    <sql-connector-db Id="abdf9fca-8799-4eef-ad6c-f8872f23bd63" Left="956.43" Top="26" Width="160.57" Height="135.59" />
     <application-object Id="6ac79117-48cc-4bcb-aef9-537c573a6525" Left="434" Top="26" Width="150" Height="100" />
   </external-runtime>
   <application-object Id="6ac79117-48cc-4bcb-aef9-537c573a6525" OffsetX="0" OffsetY="0" Scale="1" SnapToGrid="false">
     <object Id="a45a46ff-228d-4924-af4e-f3364ff79e98" Left="487" Top="26" Width="150" Height="100" />
-    <sql-connector-link-map Id="dc40ccbb-1427-477d-9fac-858ba97d6d6c" Left="495" Top="198.08" Width="144.08" Height="61.63" />
+    <sql-connector-link-map Id="dc40ccbb-1427-477d-9fac-858ba97d6d6c" Left="735" Top="44.08" Width="144.08" Height="61.63" />
   </application-object>
   <object Id="a45a46ff-228d-4924-af4e-f3364ff79e98" OffsetX="0" OffsetY="0" Scale="1" SnapToGrid="false">
-    <parameter Id="ab5f1e58-b176-4ae0-af30-42298b858d96" Left="1077.17333333333" Top="26" Width="144.826666666667" Height="22" />
-    <parameter Id="86ae7ec0-79be-4eed-96fc-a8b5ec2491dc" Left="24" Top="26" Width="151.296666666667" Height="22" />
-    <parameter Id="9ca3e7e5-79cc-4604-ad70-d72d71e92c45" Left="28" Top="75.08" Width="151.296666666667" Height="22" />
+    <parameter Id="ab5f1e58-b176-4ae0-af30-42298b858d96" Left="964.173333333333" Top="26" Width="144.826666666667" Height="22" />
+    <parameter Id="33552164-c46d-4cf1-9bc1-4e40b455052a" Left="972.173333333333" Top="80" Width="144.826666666667" Height="22" />
   </object>
   <object Id="4fd4a5d6-14fd-4019-9a3c-d157002e3e24" OffsetX="0" OffsetY="0" Scale="1" SnapToGrid="false">
     <subject-ref Id="dfbca909-b1fe-4895-b122-d09c621cc626" Left="390" Top="26" Width="368.876666666667" Height="134.63" />
-    <parameter Id="8696c6b1-03b8-486d-91e1-626dfc88d95a" Left="998.04" Top="36.63" Width="223.96" Height="22" />
-    <parameter Id="a0df92a4-ab78-4a71-b092-499751e8d080" Left="24" Top="52" Width="175.4" Height="22" />
-    <parameter Id="8e95c0a3-a6a6-4641-8969-6f511f133f5e" Left="24" Top="78" Width="174.146666666667" Height="22" />
+    <parameter Id="8696c6b1-03b8-486d-91e1-626dfc88d95a" Left="893.04" Top="26" Width="223.96" Height="22" />
+    <parameter Id="e12f04a2-78ac-4552-b43c-80521099a1a6" Left="922.90333333333" Top="82" Width="111.096666666667" Height="22" />
+    <parameter Id="3cde6dc4-2629-4f4d-92ef-89612bb13630" Left="24" Top="52" Width="118.893333333333" Height="22" />
   </object>
   <namespace Id="4986daa0-a022-4dff-af1a-53ce1553df85" OffsetX="0" OffsetY="0" Scale="1" SnapToGrid="false" />
 </Diagrams>

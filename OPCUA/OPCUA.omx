@@ -3,7 +3,7 @@
   <link-unit name="System" uuid="d41b7089-1e82-401a-8fe4-7283d199a00c" target="Om.System" />
   <link-unit name="Server" uuid="7eccad6c-de76-45f4-88be-827f572fe53c" target="Om.Server" />
   <link-unit name="PLC" uuid="80c3dd3f-04c9-4135-a1d8-4a7938b29a88" target="Om.PLC" />
-  <dp:domain name="Domain" uuid="cae8849c-da65-4d16-9b3b-20928b93e754" address="CentralNode">
+  <dp:domain name="Domain" uuid="cae8849c-da65-4d16-9b3b-20928b93e754" address="local">
     <dp:domain-node name="DESKTOP-MHR4BSL" uuid="9a3de3f3-8d12-4431-9104-1be8de170f6a">
       <eth:ethernet-adapter name="EthernetAdapter" uuid="a15ae21f-a803-43b8-9c64-22fda549bbaa" address="127.0.0.1" network="Ethernet" />
       <srv:io-server name="Server" uuid="281af522-a89c-4b18-8f78-5a35d4983fb8">
@@ -31,20 +31,16 @@
             <r:subject-ref name="_Test" uuid="dfbca909-b1fe-4895-b122-d09c621cc626" object="Runtime.Application.Test" const-access="false" aspected="true" />
             <ct:parameter name="Result" uuid="8696c6b1-03b8-486d-91e1-626dfc88d95a" direction="out" type="float32" />
             <ct:bind source="_Test.Parameter" target="Result" />
-            <ct:parameter name="From" uuid="a0df92a4-ab78-4a71-b092-499751e8d080" direction="in" type="string">
-              <attribute type="unit.System.Attributes.InitialValue" value="2022-09-29 04:05" />
-            </ct:parameter>
-            <ct:bind source="From" target="_Test.From" />
-            <ct:parameter name="To" uuid="8e95c0a3-a6a6-4641-8969-6f511f133f5e" direction="in" type="string">
-              <attribute type="unit.System.Attributes.InitialValue" value="2022-09-29 04:10" />
-            </ct:parameter>
-            <ct:bind source="To" target="_Test.To" />
+            <ct:parameter name="one" uuid="e12f04a2-78ac-4552-b43c-80521099a1a6" direction="out" type="float32" />
+            <ct:bind source="_Test.one" target="one" />
+            <ct:parameter name="Input" uuid="3cde6dc4-2629-4f4d-92ef-89612bb13630" direction="in" type="float32" />
+            <ct:bind source="Input" target="_Test.Input" />
           </ct:object>
         </dp:application-object>
         <srv:sqlconnector-module name="SqlConnector" uuid="b6457118-c76d-40fc-8427-9110b3ddf76e" logging-required="true">
           <sql:database-link db="Runtime.SqlDatabase" provider="ODBC">
-            <property name="password">r27XG9M6Qkl12qmWH2MoIRseaEAvMi4tN8vn+wvaGLf3HHG6dQGCvRGpXmpkB2gr1gzmXY4Ut96m3IcIsEeGnqoV2xI02X6VskIbBPYeIqseB0F6yju6n0TO4EyAj6O2PjPLu9x9DAQ7i9vdjJiiN/UV8xTMnDxQFVN56M7WQus</property>
-            <property name="connection-string">Driver={PostgreSQL Unicode(x64)};Server=127.0.0.1;Port=5432;Database=postgres;UID=postgres;PWD=secret;</property>
+            <property name="password">XP/QeU0hioWHTUL6ZdFY1oBV1LAO+HtyomXx36KlB2eqBM8TcvLki3Z/xZV81O7cRQk5JMRZ8rJ1XprevegA5K43Dvfa7bSFE4+PB8HKhTcROunaCSpX7G0oKDyrG3wB9ydo0Rh7w9oyISbZggFEGVDBwvPUBjeTLWxzJnYcfIk</property>
+            <property name="connection-string">Driver={PostgreSQL Unicode(x64)};Server=127.0.0.1;Port=5432;Database=MyDb;UID=dduser;PWD=dduser;</property>
           </sql:database-link>
           <property name="settings">
             <node type="SqlConnector" xmlns="">
@@ -53,7 +49,7 @@
                   <prop name="ID" value="1" />
                   <prop name="KeyField" value="" />
                   <prop name="Period" value="1000" />
-                  <prop name="Text" value="SELECT SUM(valdouble) AS total FROM nodes_history h JOIN nodes n ON n.NodeId=h.NodeId WHERE (n.TagName='Test.Parameter') AND (h.time BETWEEN ? AND ?)" />
+                  <prop name="Text" value="SELECT SUM(valdouble) AS total FROM node_sql" />
                   <prop name="EmptyRequestResult" value="False" />
                   <prop name="Timezone" value="0" />
                   <prop name="DefaultQuality" value="64" />
@@ -61,6 +57,24 @@
                     <prop name="ColumnName" value="valdouble" />
                     <prop name="DefaultValue" value="0" />
                   </node>
+                </node>
+                <node type="RQuery">
+                  <prop name="ID" value="2" />
+                  <prop name="KeyField" value="" />
+                  <prop name="Period" value="10000" />
+                  <prop name="Text" value="SELECT valdouble AS one FROM node_sql limit 1" />
+                  <prop name="EmptyRequestResult" value="False" />
+                  <prop name="Timezone" value="0" />
+                  <prop name="DefaultQuality" value="64" />
+                </node>
+                <node type="RQuery">
+                  <prop name="ID" value="3" />
+                  <prop name="KeyField" value="" />
+                  <prop name="Period" value="10000" />
+                  <prop name="Text" value="UPDATE node_sql set valdouble = ?" />
+                  <prop name="EmptyRequestResult" value="False" />
+                  <prop name="Timezone" value="0" />
+                  <prop name="DefaultQuality" value="64" />
                 </node>
               </node>
             </node>
@@ -76,8 +90,8 @@
         <dp:application-object name="Application" uuid="6ac79117-48cc-4bcb-aef9-537c573a6525">
           <ct:object name="Test" uuid="a45a46ff-228d-4924-af4e-f3364ff79e98" aspect="Aspects.PLC">
             <ct:parameter name="Parameter" uuid="ab5f1e58-b176-4ae0-af30-42298b858d96" type="float32" direction="out" />
-            <ct:parameter name="From" uuid="86ae7ec0-79be-4eed-96fc-a8b5ec2491dc" type="string" direction="in" />
-            <ct:parameter name="To" uuid="9ca3e7e5-79cc-4604-ad70-d72d71e92c45" type="string" direction="in" />
+            <ct:parameter name="one" type="float32" direction="out" uuid="33552164-c46d-4cf1-9bc1-4e40b455052a" />
+            <ct:parameter name="Input" uuid="77bfffe6-d343-46c5-8006-1c3f4317bbb4" type="float32" direction="in" />
           </ct:object>
           <sql:sql-connector-link-map name="SqlLinkMap" uuid="dc40ccbb-1427-477d-9fac-858ba97d6d6c" file="SQL.xml" />
         </dp:application-object>

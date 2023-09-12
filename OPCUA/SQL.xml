@@ -6,17 +6,16 @@
     <value>total</value>
   </item>
   <item Binding="Introduced">
-    <node-path>Test.From</node-path>
-    <query-id>1</query-id>
-    <type>QParam</type>
-    <param-id>1</param-id>
-    <param-value-prop-id>2</param-value-prop-id>
+    <node-path>Test.one</node-path>
+    <query-id>2</query-id>
+    <type>QRead</type>
+    <value>one</value>
   </item>
   <item Binding="Introduced">
-    <node-path>Test.To</node-path>
-    <query-id>1</query-id>
+    <node-path>Test.Input</node-path>
+    <query-id>3</query-id>
     <type>QParam</type>
-    <param-id>2</param-id>
-    <param-value-prop-id>2</param-value-prop-id>
+    <value>Input</value>
+    <param-id>1</param-id>
   </item>
 </root>
