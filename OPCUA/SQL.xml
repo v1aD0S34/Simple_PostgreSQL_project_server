@@ -18,4 +18,18 @@
     <value>Input</value>
     <param-id>1</param-id>
   </item>
+  <item Binding="Introduced">
+    <node-path>Test.Id</node-path>
+    <query-id>4</query-id>
+    <type>QParam</type>
+    <value>Id</value>
+    <param-id>2</param-id>
+  </item>
+  <item Binding="Introduced">
+    <node-path>Test.valToId</node-path>
+    <query-id>4</query-id>
+    <type>QParam</type>
+    <value>valToId</value>
+    <param-id>1</param-id>
+  </item>
 </root>

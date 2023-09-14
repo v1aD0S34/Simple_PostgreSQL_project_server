@@ -35,6 +35,10 @@
             <ct:bind source="_Test.one" target="one" />
             <ct:parameter name="Input" uuid="3cde6dc4-2629-4f4d-92ef-89612bb13630" direction="in" type="float32" />
             <ct:bind source="Input" target="_Test.Input" />
+            <ct:parameter name="valToId" uuid="4e4d353b-783d-4684-9abc-e736002cedb4" direction="in" type="float32" />
+            <ct:bind source="valToId" target="_Test.valToId" />
+            <ct:parameter name="Id" uuid="22cf8cbb-27e0-41a2-b12d-7c11fc814a04" direction="in" type="float32" />
+            <ct:bind source="Id" target="_Test.Id" />
           </ct:object>
         </dp:application-object>
         <srv:sqlconnector-module name="SqlConnector" uuid="b6457118-c76d-40fc-8427-9110b3ddf76e" logging-required="true">
@@ -76,6 +80,15 @@
                   <prop name="Timezone" value="0" />
                   <prop name="DefaultQuality" value="64" />
                 </node>
+                <node type="RQuery">
+                  <prop name="ID" value="4" />
+                  <prop name="KeyField" value="" />
+                  <prop name="Period" value="10000" />
+                  <prop name="Text" value="UPDATE node_sql set valdouble = ? where id = ?" />
+                  <prop name="EmptyRequestResult" value="False" />
+                  <prop name="Timezone" value="0" />
+                  <prop name="DefaultQuality" value="64" />
+                </node>
               </node>
             </node>
           </property>
@@ -92,6 +105,8 @@
             <ct:parameter name="Parameter" uuid="ab5f1e58-b176-4ae0-af30-42298b858d96" type="float32" direction="out" />
             <ct:parameter name="one" type="float32" direction="out" uuid="33552164-c46d-4cf1-9bc1-4e40b455052a" />
             <ct:parameter name="Input" uuid="77bfffe6-d343-46c5-8006-1c3f4317bbb4" type="float32" direction="in" />
+            <ct:parameter name="Id" uuid="aa5bbdf0-1892-45bf-86a3-4c221e2ba7b0" type="float32" direction="in" />
+            <ct:parameter name="valToId" type="float32" direction="in" uuid="5600124e-7360-4c1e-90a4-4e011e27861d" />
           </ct:object>
           <sql:sql-connector-link-map name="SqlLinkMap" uuid="dc40ccbb-1427-477d-9fac-858ba97d6d6c" file="SQL.xml" />
         </dp:application-object>
