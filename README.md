@@ -79,3 +79,11 @@
 <p align="center">
   <img src="pic/image-6.png" alt="Боль продолжается"> <br/> Пример запроса 4 на обновление значения в БД с двумя параметрами
 </p>
+
+## Дебагинг
+
+#### Для мониторинга ошибок при создании запросов необходимо использовать программу *"Просмотрщик лога кадров"*
+> Расположение проги: C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Automiq\Alpha.Imitator
+
+####  При запуске необходимо открыть файл логов *SqlConnector.aplog*
+> Расположение логов: C:\Program Files\Automiq\Alpha.Server\Logs
